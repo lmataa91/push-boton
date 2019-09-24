@@ -1,0 +1,27 @@
+const int buttonPin1=2;// declaracion de push 
+const int buttonPin2=10;
+
+int buttonState1 =0;
+int buttonState2 =0;//estado actual del botón
+
+String data;//se declara clase string 
+void setup() {
+  Serial.begin(9600);// abre el puerto serie, establece la velocidad de datos a 9600 bps
+  pinMode(buttonPin1,INPUT);//se declara encendido 
+  pinMode(buttonPin2,INPUT);
+
+}
+void loop() {
+  buttonState1=digitalRead(buttonPin1);//leer el pin de entrada del botón
+    buttonState2=digitalRead(buttonPin2);
+    data = normalizeData(buttonState1,buttonState2);
+    
+    Serial.println(data);
+    delay (20);//tiempo 
+}
+String normalizeData(int b1,int b2){// declaracion b1(boton), b1(boton)
+  String B1string=String(b1);//B1=b1
+   String B2string=String(b2);//B2=b2
+   String ret = String ("S")+B1string+B2string+String("E");
+   return ret;//Termina una función y devuelva un valor de una función a la función de llamada
+}
